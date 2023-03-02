@@ -1,6 +1,5 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.8
 COPY ./app /app
-COPY ./package /package
 ADD sources.list /etc/apt/
 RUN apt-get update -y && apt install libx11-xcb1 -y && apt-get install libgl1 -y
 
