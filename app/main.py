@@ -1,5 +1,5 @@
 import os
-from flask import Flask,request,g
+from flask import Flask,request,g,jsonify
 from ultralytics import YOLO
 import json
 import io
@@ -65,6 +65,6 @@ def predict():
                 re_results["det_res"][label]["boxes"].append(box.tolist())                
                 re_results["det_res"][label]["num"]+=1
     re_results["res_URL"]="https://flask-hp6c-32790-7-1317006726.sh.run.tcloudbase.com/static/img/img.jpg"
-    return json.dumps(re_results)
+    return jsonify(re_results)
 if __name__ == "__main__":    # Load a model    
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 80)))
